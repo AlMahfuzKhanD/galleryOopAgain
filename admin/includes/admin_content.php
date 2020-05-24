@@ -7,6 +7,18 @@
                             Home
                             <small>Editted</small>
                         </h1>
+                        <?php 
+
+                        $sql = "SELECT * FROM users";
+                        $result = $database->query($sql);
+                        while($row = mysqli_fetch_array($result)){
+
+                            echo $row['id'];
+
+                        }
+                        
+                        ?>
+
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>

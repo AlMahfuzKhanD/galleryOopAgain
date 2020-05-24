@@ -4,6 +4,4 @@ define('DBUSER', 'root');
 define('DBPASS', '');
 define('DBNAME', 'gallary_db');
 
-
-
 ?>
