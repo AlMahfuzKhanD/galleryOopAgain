@@ -24,7 +24,7 @@ require_once("new_config.php");
 
  	public function query($sql){
 
- 		$result = mysqli_query($this->connection,$sql);
+ 		$result = $this->connection->query($sql);
  		
 
  		return $result;
@@ -34,18 +34,22 @@ require_once("new_config.php");
  	private function confirmQuery($result){
 
  		if(!$result){
- 			die("quewry failed");
+ 			die("quewry failed". $this->connection->error);
  		}
 
  	} // end confirmQuery
 
  	public function escapeString($string){
 
- 		$escapedString = mysqli_real_escape_string($this->connection,$string);
+ 		$escapedString = $this->connection->real_escape_string($string);
 
  		return $escapedString;
 
  	} // end eschape string
+
+ 	public function theInserId(){
+ 		return $this->connection->insert_id;
+ 	}
 
 
 
