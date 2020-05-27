@@ -11,6 +11,14 @@
 
                         //$user = new User();
 
+                        // $result = User::findAll();
+                        // while($user = mysqli_fetch_array($result)){
+                        //     echo $user['userName'] ."<br>";
+                        // }
+                        
+
+
+
                         $result = User::findById(11);
                         echo $result['userName'];
                         

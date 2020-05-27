@@ -4,10 +4,7 @@ class User{
 
 	public static function findAll(){
 
-		global $database;
-
-		$resultSet = $database->query("SELECT * FROM users");
-		return $resultSet;
+		return self::findThisQuery("SELECT * FROM users");
 
 	} // findAll
 
@@ -15,11 +12,20 @@ class User{
 
 		global $database;
 
-		$resultSet = $database->query("SELECT * FROM users WHERE id = $id LIMIT 1");
+		$resultSet = self::findThisQuery("SELECT * FROM users WHERE id = $id LIMIT 1");
 		$foundUser = mysqli_fetch_array($resultSet);
 		return $foundUser;
 
 	} // findById
+
+	public static function findThisQuery($sql){
+
+		global $database;
+		$resultSet = $database->query($sql);
+		return $resultSet;
+
+
+	} //end findThisQuery
 
 } // end user class
 ?>
