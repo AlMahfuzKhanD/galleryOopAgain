@@ -9,13 +9,10 @@
                         </h1>
                         <?php 
 
-                        $sql = "SELECT * FROM users";
-                        $result = $database->query($sql);
-                        while($row = mysqli_fetch_array($result)){
+                        //$user = new User();
 
-                            echo $row['id'];
-
-                        }
+                        $result = User::findById(11);
+                        echo $result['userName'];
                         
                         ?>
 
