@@ -2,6 +2,8 @@
 
 require_once("new_config.php");
 
+
+
  class Database{
 
  	public $connection;
@@ -25,8 +27,9 @@ require_once("new_config.php");
  	public function query($sql){
 
  		$result = $this->connection->query($sql);
- 		
 
+ 		$this->confirmQuery($result);
+ 		
  		return $result;
 
  	} // end query
