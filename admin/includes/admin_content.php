@@ -20,7 +20,10 @@
 
 
                         $result = User::findById(11);
-                        echo $result['userName'];
+                        $user = User::instantiation($result);
+
+
+                        echo $user->id;
                         
                         ?>
 
