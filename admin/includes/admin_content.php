@@ -19,11 +19,16 @@
 
 
 
-                        $result = User::findById(11);
-                        $user = User::instantiation($result);
+                        // $result = User::findById(11);
+                        // $user = User::instantiation($result);
 
 
-                        echo $user->id;
+                        // echo $user->id;
+
+                        $users = User::findAll();
+                        foreach ($users as $user) {
+                            echo $user->id . "<br>";
+                        }
                         
                         ?>
 

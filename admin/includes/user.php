@@ -35,7 +35,14 @@ class User{
 
 		global $database;
 		$resultSet = $database->query($sql);
-		return $resultSet;
+		$theObjectArray = array();
+
+		while($row = mysqli_fetch_array($resultSet)){
+
+			$theObjectArray[] = self::instantiation($row);
+
+		}
+		return $theObjectArray;
 
 
 	} //end findThisQuery
@@ -47,7 +54,7 @@ class User{
 		foreach($record as $theAttribute => $value){
 
 			if($theObject->hasTheAttribute($theAttribute)){
-				$theObject->theAttribute = $value;
+				$theObject->$theAttribute = $value;
 			} // end if
 
 		} // end foreach
@@ -57,6 +64,14 @@ class User{
         return $theObject;
 
 	} // end instantiation
+
+	private function hasTheAttribute($theAttribute){
+
+		$objectProperty = get_object_vars($this); // get_object_vars() return all the propery of the class
+
+		return array_key_exists($theAttribute, $objectProperty);
+
+	} //end hasTheAttribute
 
 } // end user class
 ?>
