@@ -54,7 +54,7 @@ class User{
 		foreach($record as $theAttribute => $value){
 
 			if($theObject->hasTheAttribute($theAttribute)){
-				$theObject->$theAttribute = $value;
+				$theObject->$theAttribute = $value; 
 			} // end if
 
 		} // end foreach
