@@ -25,9 +25,10 @@ class User{
 
 		global $database;
 
-		$resultSet = self::findThisQuery("SELECT * FROM users WHERE id = $id LIMIT 1");
-		$foundUser = mysqli_fetch_array($resultSet);
-		return $foundUser;
+		$resultArray = self::findThisQuery("SELECT * FROM users WHERE id = $id LIMIT 1");
+		
+		return !empty($resultArray) ? array_shift($resultArray) : false;
+		
 
 	} // findById
 

@@ -25,10 +25,15 @@
 
                         // echo $user->id;
 
-                        $users = User::findAll();
-                        foreach ($users as $user) {
-                            echo $user->id . "<br>";
-                        }
+                        // $users = User::findAll();
+                        // foreach ($users as $user) {
+                        //     echo $user->id . "<br>";
+                        // }
+
+                        $foundUser = User::findById(11);
+
+                        echo $foundUser->userName;
+
                         
                         ?>
 
