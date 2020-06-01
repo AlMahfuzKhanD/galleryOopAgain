@@ -2,14 +2,42 @@
 
 class Session {
 
-	private $signedIn;
+	private $signedIn = false;
 	public $userId;
 
 	function __construct(){
 
 		session_start();
+		$this->checkTheLogin();
 
 	} // end of construct
+
+	public isSignedIn(){ //getter method used to use private property outside class
+
+		$this->signedIn;
+
+	} // end isSignedIn
+
+	public function login($user){
+
+		if($user){
+
+			$this->userId = $_SESSION['userId'] = $user->id;
+			$this->signedIn = true;
+
+		} // end if
+
+	} // end login 
+
+	public function logout(){
+
+		unset($_SESSION['userId']);
+		unset($this->userId);
+		$this->signedIn = false;
+
+	} // end of logout
+
+
 
 	private function checkTheLogin(){
 
