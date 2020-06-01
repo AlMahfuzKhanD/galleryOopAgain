@@ -33,7 +33,7 @@ if(isset($_POST['submit'])){
 
 <div class="col-md-4 col-md-offset-3">
 
-<h4 class="bg-danger"><?php //echo $theMessage; ?></h4>
+<h4 class="bg-danger"><?php echo $theMessage; ?></h4>
 	
 <form id="login-id" action="" method="post">
 	
@@ -60,4 +60,3 @@ if(isset($_POST['submit'])){
 
 
 </div>
-

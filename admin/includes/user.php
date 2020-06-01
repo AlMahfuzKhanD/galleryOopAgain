@@ -17,7 +17,7 @@ class User{
 
 	public static function findAll(){
 
-		return self::findThisQuery("SELECT * FROM users");
+		return self::findByQuery("SELECT * FROM users");
 
 	} // findAll
 
@@ -25,14 +25,14 @@ class User{
 
 		global $database;
 
-		$resultArray = self::findThisQuery("SELECT * FROM users WHERE id = $id LIMIT 1");
+		$resultArray = self::findByQuery("SELECT * FROM users WHERE id = $id LIMIT 1");
 		
 		return !empty($resultArray) ? array_shift($resultArray) : false;
 		
 
 	} // findById
 
-	public static function findThisQuery($sql){
+	public static function findByQuery($sql){
 
 		global $database;
 		$resultSet = $database->query($sql);
@@ -46,24 +46,38 @@ class User{
 		return $theObjectArray;
 
 
-	} //end findThisQuery
+	} //end findByQuery
 
-	public static function verifyUser($userName, $password){
+	// public static function verifyUser($userName, $password){
 
+	// 	global $database;
+	// 	$userName = $database->escapeString($userName);
+	// 	$userName = $database->escapeString($password);
+
+	// 	$sql = "SELECT * FROM users WHERE ";
+	// 	$sql .= "userName = '{$userName}' ";
+	// 	$sql .= "AND password = '{$password}' ";
+	// 	$sql .= "LIMIT 1";
+
+	// 	$resultArray = self::findByQuery($sql);
+		
+	// 	return !empty($resultArray) ? array_shift($resultArray) : false;
+
+	// } // end verify user
+
+	public static function verifyUser($userName,$password){
 		global $database;
 		$userName = $database->escapeString($userName);
-		$userName = $database->escapeString($password);
-
+		$password = $database->escapeString($password);
 		$sql = "SELECT * FROM users WHERE ";
 		$sql .= "userName = '{$userName}' ";
 		$sql .= "AND password = '{$password}' ";
 		$sql .= "LIMIT 1";
 
-		$resultArray = self::findThisQuery($sql);
-		
-		return !empty($resultArray) ? array_shift($resultArray) : false;
+		$theResultArray = self::findByQuery($sql);
 
-	} // end verify user
+		return !empty($theResultArray) ? array_shift($theResultArray) : false;
+	}
 
 	public static function instantiation($record){
 
