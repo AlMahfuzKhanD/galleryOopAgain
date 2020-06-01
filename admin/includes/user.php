@@ -48,6 +48,23 @@ class User{
 
 	} //end findThisQuery
 
+	public static function verifyUser($userName, $password){
+
+		global $database;
+		$userName = $database->escapeString($userName);
+		$userName = $database->escapeString($password);
+
+		$sql = "SELECT * FROM users WHERE ";
+		$sql .= "userName = '{$userName}' ";
+		$sql .= "AND password = '{$password}' ";
+		$sql .= "LIMIT 1";
+
+		$resultArray = self::findThisQuery($sql);
+		
+		return !empty($resultArray) ? array_shift($resultArray) : false;
+
+	} // end verify user
+
 	public static function instantiation($record){
 
 		$theObject = new self;

@@ -1,5 +1,7 @@
 <?php
 
+
+
 function classAutoloader($class){
 
 	$class = strtolower($class);
@@ -12,5 +14,9 @@ function classAutoloader($class){
 } // end classAutoloader
 
 spl_autoload_register('classAutoloader');
+
+function redirect($location){
+	header("Location: {$location}");
+}
 
 ?>

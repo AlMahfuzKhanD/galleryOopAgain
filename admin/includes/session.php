@@ -12,7 +12,7 @@ class Session {
 
 	} // end of construct
 
-	public isSignedIn(){ //getter method used to use private property outside class
+	public function isSignedIn(){ //getter method used to use private property outside class
 
 		$this->signedIn;
 
